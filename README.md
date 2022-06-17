@@ -1,5 +1,5 @@
 # CRC-AX.25
-This program calculates the FCS (Frame Check Sequence) through CRC and the corrent ISO standard - this was made very quickly...
+This program calculates the FCS (Frame Check Sequence) through CRC and the corrent ISO standard - this was made very quickly and was a faster way than testing it directly on the RP2040 (for the A30B Project)...
 Please compile as such:
 ```
 gcc CRC16.c -o crc16
