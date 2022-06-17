@@ -64,7 +64,7 @@ void printBinC(char *in)
 int main(int argc, char **argv)
 {
     printf("CRC16 Algorithm tester\r\n");
-    if(argc < 1)
+    if(argc != 2)
     {
         printf("Error, please input message -> 'crc16 123456789'\r\n");
         return 1;
