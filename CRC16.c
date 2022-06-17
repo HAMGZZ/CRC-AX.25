@@ -5,6 +5,7 @@
 #include <stdint.h>
 #include <time.h>
 
+// THE USEFULL FUNCTION
 uint16_t crc16(char * data, long len)
 {
     uint16_t crc = 0xFFFF;
@@ -27,6 +28,7 @@ uint16_t crc16(char * data, long len)
     return crc ^ 0xFFFF;
 }
 
+// THE LESS USEFUL BUT STILL NEEDED FUNCTION, GOOD ON 32BIT MACHINES
 void bflip(char * array, long len)
 {
     for (long i = 0; i < len; i++)
@@ -77,14 +79,22 @@ int main(int argc, char **argv)
             printf(" | ");
         }
         printf("\r\nFLIPPED:\t ");
+
+        // YOU WANT TO DO THIS FOR AX25 AS IT IS LSB
         bflip(argv[1], strlen(argv[1]));
+        
+        
         for (int i = 0; i < strlen(argv[1]); i++)
         {
             printBinC(&argv[1][i]);
             printf(" | ");
         }
         clock_t begin = clock();
+
+        // THIS IS THE OTHER LINE YOU WANT, WHERE IT CALCULATES IT!
         uint16_t result = crc16(argv[1], strlen(argv[1]));
+        
+        
         clock_t end = clock();
         double timespend = (double)(end - begin) / CLOCKS_PER_SEC;
         printf("\r\nRESULT: \t %04x\r\n", result);
